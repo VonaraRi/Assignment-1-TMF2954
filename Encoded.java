@@ -7,15 +7,18 @@ public class Encoded{  //public-can accessed to other classes
   private final String groupID="G04/SE-G04"; //the secret group ID,fixed and hidden
 
   //constructor without any input,sets defoult values
+  //run when no value is given
+  //to create an object with empty values.
   public Encoded(){
-   this.inputText= ""; // start with an empty string
+   this.inputText= ""; // set input text to  empty string
     this.charCount= 0;  //no characters yet
     this.resultText= ""; // no encoded text yet
     
   }
 //constructor with an input string provided by the user
+  //run when user gives a text
   public Encoded(String inputText) {
-      this.inputText= inputText; //store the provided string
+      this.inputText= inputText; //save the user input into the variable
       this.charCount= 0;  //initially zero, will count later
       this.resultText= ""; //empty untill encoding
   }
@@ -24,7 +27,8 @@ public class Encoded{  //public-can accessed to other classes
     return inputText;  
   }
   public void setInputText(String inputText) { //it allows other parts of the program to set a new value of inputText
-      this.inputText= inputText; //to refer to the instance variable and assigns it the value passed as a parameter
+      this.inputText= inputText; //replace old text with new text
+                                 //inputText=the new value from user
   }
   public int getCharCount(){ //it returns the current count of non-space characters
     return charCount;
