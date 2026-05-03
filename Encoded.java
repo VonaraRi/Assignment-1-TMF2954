@@ -29,7 +29,7 @@ public class Encoded{  //public-can accessed to other classes
   public int getCharCount(){ //it returns the current count of non-space characters
     return charCount;
   }
-  public Steing getResultText(){//return encoded string
+  public String getResultText(){//return encoded string
     return resultText;
   }
 }
