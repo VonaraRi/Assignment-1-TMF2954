@@ -32,4 +32,5 @@ public class Encoded{  //public-can accessed to other classes
   public String getResultText(){//return encoded string
     return resultText;
   }
-}
+} 
+//Contributed by Rosfanida
