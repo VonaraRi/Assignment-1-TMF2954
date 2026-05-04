@@ -36,5 +36,36 @@ public class Encoded{  //public-can accessed to other classes
   public String getResultText(){//return encoded string
     return resultText;
   }
-} 
 //Contributed by Rosfanida
+
+  /*method for string validation:
+    ensure letters are lowercase and allow digits and white space
+    return true if input matches a-z, 0-9, and ' '
+  */
+  public boolean checkStringValidity(String text) {
+    return text.matches("[a-z0-9 ]+");
+  } 
+
+  /*method to count characters input by user
+    num is used for final shift
+  */
+  public int countCharacters(String text) {
+    int count = 0;
+    for (char c : text.toCharArray()) {
+      if (c != ' ') {
+        count++;
+      }
+      this.charCount = count; //update class field so can be easily called
+      return count;
+  }
+    
+  // method to generate unique integer based on groupID (G04/SE-G04)
+  public int generateShift() {
+    return Math.abs(groupID.hashcode() % 10) + 1;
+    /*hashCode() turns groupID into a large integer
+      %10 reduce it to its remainder
+      Math.abs to ensure returned integer is positive
+    */
+  }
+// Contributed by Sabrina
+}
