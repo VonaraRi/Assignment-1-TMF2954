@@ -36,5 +36,78 @@ public class Encoded{  //public-can accessed to other classes
   public String getResultText(){//return encoded string
     return resultText;
   }
+
+//Contributed by Rosfanida
+
+// ===== Section Break =====
+// Placeholder, to be Contributed by Member 3
+
+  public boolean checkStringValidity(String inputText){
+    return true;
+}
+
+public int countCharacters(String inputText){
+    return 0;
+}
+
+public int generateShift(){
+    return 1;
+}
+
+// ===== Section Break =====
+// End of Placeholder, to be Contributed by Member 3
+
+// ===== Section Break =====
+// Encoding Logic & Final Integration 
+// Contributed by Chan Ka Hou
+// Purpose: Encode the input text using the finalShift value.
+
+  public String applyCipher(String inputText, int shift){
+
+      //String faces frequent modification, StringBuilder eases the process
+      StringBuilder encodedText = new StringBuilder();
+
+      //Loop through every character
+      for(int i = 0; i < inputText.length(); i++){
+
+          char c = inputText.charAt(i); // inputText holds original user input
+
+          // ===== Encode lowercase letters =====
+          if(Character.isLowerCase(c)){
+
+              // using the assignment's provided formula
+              char shiftedChar =
+                  (char)((c - 'a' + shift) % 26 + 'a');
+
+              encodedText.append(shiftedChar);
+          }
+
+          //===== Encode digits =====
+          else if(Character.isDigit(c)){
+
+              // using the assignment's provided formula
+              char shiftedDigit =
+                  (char)((c - '0' + shift) % 10 + '0');
+
+              encodedText.append(shiftedDigit);
+          }
+
+          //===== Preserve spaces ======
+          else if(Character.isWhitespace(c)){
+
+              encodedText.append(c);
+          }
+      }
+
+      //Store result into class variable
+      this.resultText = encodedText.toString();
+
+      return resultText; // resultText holds final encoded string
+  }
+
+	// ===== Section Break =====
+	// End of Encoding Logic & Final Integration 
+	// Contributed by Chan Ka Hou
+  
 } 
 //Contributed by Rosfanida
