@@ -55,17 +55,71 @@ public class Encoded{  //public-can accessed to other classes
       if (c != ' ') {
         count++;
       }
+  }
       this.charCount = count; //update class field so can be easily called
       return count;
   }
     
   // method to generate unique integer based on groupID (G04/SE-G04)
   public int generateShift() {
-    return Math.abs(groupID.hashcode() % 10) + 1;
+    return Math.abs(groupID.hashCode() % 10) + 1;
     /*hashCode() turns groupID into a large integer
       %10 reduce it to its remainder
       Math.abs to ensure returned integer is positive
     */
   }
 // Contributed by Sabrina
+    
+// ===== Section Break =====
+// Encoding Logic & Final Integration 
+// Contributed by Chan Ka Hou
+// Purpose: Encode the input text using the finalShift value.
+
+  public String applyCipher(String inputText, int shift){
+
+      //String faces frequent modification, StringBuilder eases the process
+      StringBuilder encodedText = new StringBuilder();
+
+      //Loop through every character
+      for(int i = 0; i < inputText.length(); i++){
+
+          char c = inputText.charAt(i); // inputText holds original user input
+
+          // ===== Encode lowercase letters =====
+          if(Character.isLowerCase(c)){
+
+              // using the assignment's provided formula
+              char shiftedChar =
+                  (char)((c - 'a' + shift) % 26 + 'a');
+
+              encodedText.append(shiftedChar);
+          }
+
+          //===== Encode digits =====
+          else if(Character.isDigit(c)){
+
+              // using the assignment's provided formula
+              char shiftedDigit =
+                  (char)((c - '0' + shift) % 10 + '0');
+
+              encodedText.append(shiftedDigit);
+          }
+
+          //===== Preserve spaces ======
+          else if(Character.isWhitespace(c)){
+
+              encodedText.append(c);
+          }
+      }
+
+      //Store result into class variable
+      this.resultText = encodedText.toString();
+
+      return resultText; // resultText holds final encoded string
+  }
+
+	// ===== Section Break =====
+	// End of Encoding Logic & Final Integration 
+	// Contributed by Chan Ka Hou
+    
 }
