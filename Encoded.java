@@ -39,23 +39,37 @@ public class Encoded{  //public-can accessed to other classes
 
 //Contributed by Rosfanida
 
-// ===== Section Break =====
-// Placeholder, to be Contributed by Member 3
+  /*method for string validation:
+    ensure letters are lowercase and allow digits and white space
+    return true if input matches a-z, 0-9, and ' '
+  */
+  public boolean checkStringValidity(String text) {
+    return text.matches("[a-z0-9 ]+");
+  } 
 
-  public boolean checkStringValidity(String inputText){
-    return true;
-}
-
-public int countCharacters(String inputText){
-    return 0;
-}
-
-public int generateShift(){
-    return 1;
-}
-
-// ===== Section Break =====
-// End of Placeholder, to be Contributed by Member 3
+  /*method to count characters input by user
+    num is used for final shift
+  */
+  public int countCharacters(String text) {
+    int count = 0;
+    for (char c : text.toCharArray()) {
+      if (c != ' ') {
+        count++;
+      }
+  }
+      this.charCount = count; //update class field so can be easily called
+      return count;
+  }
+    
+  // method to generate unique integer based on groupID (G04/SE-G04)
+  public int generateShift() {
+    return Math.abs(groupID.hashCode() % 10) + 1;
+    /*hashCode() turns groupID into a large integer
+      %10 reduce it to its remainder
+      Math.abs to ensure returned integer is positive
+    */
+  }
+// Contributed by Sabrina
 
 // ===== Section Break =====
 // Encoding Logic & Final Integration 
@@ -108,6 +122,5 @@ public int generateShift(){
 	// ===== Section Break =====
 	// End of Encoding Logic & Final Integration 
 	// Contributed by Chan Ka Hou
-  
-} 
-//Contributed by Rosfanida
+
+}
